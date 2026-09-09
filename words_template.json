@@ -1,0 +1,246 @@
+{
+  "title": "Pronunciation & Stress Practice",
+  "subtitle": "Grade 8 · 20 questions · one word pattern at a time",
+  "questions": [
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 0,
+      "options": [
+        { "word": "foot", "underline": "oo", "ipa": "/fʊt/", "explain": "short vowel /ʊ/ — the odd one out" },
+        { "word": "food", "underline": "oo", "ipa": "/fuːd/", "explain": "long vowel /uː/" },
+        { "word": "moon", "underline": "oo", "ipa": "/muːn/", "explain": "long vowel /uː/" },
+        { "word": "spoon", "underline": "oo", "ipa": "/spuːn/", "explain": "long vowel /uː/" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 0,
+      "options": [
+        { "word": "school", "underline": "ch", "ipa": "/skuːl/", "explain": "\"ch\" said as /k/ — the odd one out" },
+        { "word": "chair", "underline": "ch", "ipa": "/tʃeər/", "explain": "\"ch\" said as /tʃ/" },
+        { "word": "teacher", "underline": "ch", "ipa": "/ˈtiːtʃər/", "explain": "\"ch\" said as /tʃ/" },
+        { "word": "children", "underline": "ch", "ipa": "/ˈtʃɪldrən/", "explain": "\"ch\" said as /tʃ/" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "dogs", "underline": "s", "ipa": "/dɒgz/", "explain": "\"s\" said as /z/" },
+        { "word": "bags", "underline": "s", "ipa": "/bægz/", "explain": "\"s\" said as /z/" },
+        { "word": "cars", "underline": "s", "ipa": "/kɑːrz/", "explain": "\"s\" said as /z/" },
+        { "word": "cats", "underline": "s", "ipa": "/kæts/", "explain": "\"s\" said as /s/ after a voiceless \"t\" — the odd one out" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "played", "underline": "ed", "ipa": "/pleɪd/", "explain": "\"ed\" said as /d/" },
+        { "word": "cleaned", "underline": "ed", "ipa": "/kliːnd/", "explain": "\"ed\" said as /d/" },
+        { "word": "lived", "underline": "ed", "ipa": "/lɪvd/", "explain": "\"ed\" said as /d/" },
+        { "word": "watched", "underline": "ed", "ipa": "/wɒtʃt/", "explain": "\"ed\" said as /t/ after a voiceless \"ch\" — the odd one out" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 0,
+      "options": [
+        { "word": "think", "underline": "th", "ipa": "/θɪŋk/", "explain": "voiceless /θ/ — the odd one out" },
+        { "word": "this", "underline": "th", "ipa": "/ðɪs/", "explain": "voiced /ð/" },
+        { "word": "that", "underline": "th", "ipa": "/ðæt/", "explain": "voiced /ð/" },
+        { "word": "mother", "underline": "th", "ipa": "/ˈmʌðər/", "explain": "voiced /ð/" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "cake", "underline": "a", "ipa": "/keɪk/", "explain": "long vowel /eɪ/" },
+        { "word": "plate", "underline": "a", "ipa": "/pleɪt/", "explain": "long vowel /eɪ/" },
+        { "word": "date", "underline": "a", "ipa": "/deɪt/", "explain": "long vowel /eɪ/" },
+        { "word": "cat", "underline": "a", "ipa": "/kæt/", "explain": "short vowel /æ/ — the odd one out" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "kite", "underline": "i", "ipa": "/kaɪt/", "explain": "long vowel /aɪ/" },
+        { "word": "nine", "underline": "i", "ipa": "/naɪn/", "explain": "long vowel /aɪ/" },
+        { "word": "rice", "underline": "i", "ipa": "/raɪs/", "explain": "long vowel /aɪ/" },
+        { "word": "is", "underline": "i", "ipa": "/ɪz/", "explain": "short vowel /ɪ/ — the odd one out" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "go", "underline": "o", "ipa": "/goʊ/", "explain": "diphthong /oʊ/" },
+        { "word": "no", "underline": "o", "ipa": "/noʊ/", "explain": "diphthong /oʊ/" },
+        { "word": "so", "underline": "o", "ipa": "/soʊ/", "explain": "diphthong /oʊ/" },
+        { "word": "do", "underline": "o", "ipa": "/duː/", "explain": "long vowel /uː/ — the odd one out" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 2,
+      "options": [
+        { "word": "cup", "underline": "u", "ipa": "/kʌp/", "explain": "short vowel /ʌ/" },
+        { "word": "sun", "underline": "u", "ipa": "/sʌn/", "explain": "short vowel /ʌ/" },
+        { "word": "music", "underline": "u", "ipa": "/ˈmjuːzɪk/", "explain": "glide + vowel /juː/ — the odd one out" },
+        { "word": "run", "underline": "u", "ipa": "/rʌn/", "explain": "short vowel /ʌ/" }
+      ]
+    },
+    {
+      "part": "pronunciation",
+      "partLabel": "Pronunciation",
+      "prompt": "Which underlined letters are pronounced differently from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "meat", "underline": "ea", "ipa": "/miːt/", "explain": "long vowel /iː/" },
+        { "word": "read", "underline": "ea", "ipa": "/riːd/", "explain": "long vowel /iː/ (present tense)" },
+        { "word": "each", "underline": "ea", "ipa": "/iːtʃ/", "explain": "long vowel /iː/" },
+        { "word": "break", "underline": "ea", "ipa": "/breɪk/", "explain": "diphthong /eɪ/ — the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "family", "ipa": "/ˈfæməli/", "explain": "FAM-i-ly — stress on the 1st syllable" },
+        { "word": "holiday", "ipa": "/ˈhɒlədeɪ/", "explain": "HOL-i-day — stress on the 1st syllable" },
+        { "word": "weekend", "ipa": "/ˈwiːkend/", "explain": "WEEK-end — stress on the 1st syllable" },
+        { "word": "invite", "ipa": "/ɪnˈvaɪt/", "explain": "in-VITE — stress on the 2nd syllable, the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 1,
+      "options": [
+        { "word": "hobby", "ipa": "/ˈhɒbi/", "explain": "HOB-by — stress on the 1st syllable" },
+        { "word": "remember", "ipa": "/rɪˈmembər/", "explain": "re-MEM-ber — stress on the 2nd syllable, the odd one out" },
+        { "word": "morning", "ipa": "/ˈmɔːrnɪŋ/", "explain": "MOR-ning — stress on the 1st syllable" },
+        { "word": "window", "ipa": "/ˈwɪndoʊ/", "explain": "WIN-dow — stress on the 1st syllable" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 0,
+      "options": [
+        { "word": "begin", "ipa": "/bɪˈgɪn/", "explain": "be-GIN — stress on the 2nd syllable, the odd one out" },
+        { "word": "open", "ipa": "/ˈoʊpən/", "explain": "O-pen — stress on the 1st syllable" },
+        { "word": "listen", "ipa": "/ˈlɪsən/", "explain": "LIS-ten — stress on the 1st syllable" },
+        { "word": "happen", "ipa": "/ˈhæpən/", "explain": "HAP-pen — stress on the 1st syllable" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "comfortable", "ipa": "/ˈkʌmftərbəl/", "explain": "COM-fort-a-ble — stress on the 1st syllable" },
+        { "word": "popular", "ipa": "/ˈpɒpjələr/", "explain": "POP-u-lar — stress on the 1st syllable" },
+        { "word": "natural", "ipa": "/ˈnætʃrəl/", "explain": "NAT-u-ral — stress on the 1st syllable" },
+        { "word": "important", "ipa": "/ɪmˈpɔːrtənt/", "explain": "im-POR-tant — stress on the 2nd syllable, the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 2,
+      "options": [
+        { "word": "dangerous", "ipa": "/ˈdeɪndʒərəs/", "explain": "DAN-ger-ous — stress on the 1st syllable" },
+        { "word": "envelope", "ipa": "/ˈenvəloʊp/", "explain": "EN-ve-lope — stress on the 1st syllable" },
+        { "word": "tomato", "ipa": "/təˈmeɪtoʊ/", "explain": "to-MA-to — stress on the 2nd syllable, the odd one out" },
+        { "word": "animal", "ipa": "/ˈænɪməl/", "explain": "AN-i-mal — stress on the 1st syllable" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "mountain", "ipa": "/ˈmaʊntən/", "explain": "MOUN-tain — stress on the 1st syllable" },
+        { "word": "village", "ipa": "/ˈvɪlɪdʒ/", "explain": "VIL-lage — stress on the 1st syllable" },
+        { "word": "farmer", "ipa": "/ˈfɑːrmər/", "explain": "FARM-er — stress on the 1st syllable" },
+        { "word": "arrive", "ipa": "/əˈraɪv/", "explain": "ar-RIVE — stress on the 2nd syllable, the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "cinema", "ipa": "/ˈsɪnəmə/", "explain": "CIN-e-ma — stress on the 1st syllable" },
+        { "word": "camera", "ipa": "/ˈkæmərə/", "explain": "CAM-e-ra — stress on the 1st syllable" },
+        { "word": "chicken", "ipa": "/ˈtʃɪkɪn/", "explain": "CHICK-en — stress on the 1st syllable" },
+        { "word": "guitar", "ipa": "/gɪˈtɑːr/", "explain": "gui-TAR — stress on the 2nd syllable, the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "relax", "ipa": "/rɪˈlæks/", "explain": "re-LAX — stress on the 2nd syllable" },
+        { "word": "repeat", "ipa": "/rɪˈpiːt/", "explain": "re-PEAT — stress on the 2nd syllable" },
+        { "word": "pollution", "ipa": "/pəˈluːʃən/", "explain": "pol-LU-tion — stress on the 2nd syllable" },
+        { "word": "planet", "ipa": "/ˈplænɪt/", "explain": "PLAN-et — stress on the 1st syllable, the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 3,
+      "options": [
+        { "word": "robot", "ipa": "/ˈroʊbɒt/", "explain": "RO-bot — stress on the 1st syllable" },
+        { "word": "moment", "ipa": "/ˈmoʊmənt/", "explain": "MO-ment — stress on the 1st syllable" },
+        { "word": "weather", "ipa": "/ˈweðər/", "explain": "WEATH-er — stress on the 1st syllable" },
+        { "word": "decide", "ipa": "/dɪˈsaɪd/", "explain": "de-CIDE — stress on the 2nd syllable, the odd one out" }
+      ]
+    },
+    {
+      "part": "stress",
+      "partLabel": "Word stress",
+      "prompt": "Which word has primary stress on a different syllable from the other three?",
+      "answer": 1,
+      "options": [
+        { "word": "student", "ipa": "/ˈstuːdənt/", "explain": "STU-dent — stress on the 1st syllable" },
+        { "word": "prepare", "ipa": "/prɪˈper/", "explain": "pre-PARE — stress on the 2nd syllable, the odd one out" },
+        { "word": "letter", "ipa": "/ˈletər/", "explain": "LET-ter — stress on the 1st syllable" },
+        { "word": "sister", "ipa": "/ˈsɪstər/", "explain": "SIS-ter — stress on the 1st syllable" }
+      ]
+    }
+  ]
+}

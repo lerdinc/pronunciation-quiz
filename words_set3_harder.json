@@ -1,0 +1,127 @@
+{
+  "title": "Pronunciation & Stress Practice — Set 3 (Harder)",
+  "subtitle": "Grade 8+ · 20 questions · more advanced vocabulary, new words only",
+  "questions": [
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 0, "options": [
+      { "word": "weigh", "underline": "igh", "ipa": "/weɪ/", "explain": "long vowel /eɪ/ (silent \"gh\") — the odd one out" },
+      { "word": "bright", "underline": "igh", "ipa": "/braɪt/", "explain": "diphthong /aɪ/ (silent \"gh\")" },
+      { "word": "flight", "underline": "igh", "ipa": "/flaɪt/", "explain": "diphthong /aɪ/ (silent \"gh\")" },
+      { "word": "thigh", "underline": "igh", "ipa": "/θaɪ/", "explain": "diphthong /aɪ/ (silent \"gh\")" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 1, "options": [
+      { "word": "author", "underline": "au", "ipa": "/ˈɔːθər/", "explain": "diphthong /ɔː/" },
+      { "word": "gauge", "underline": "au", "ipa": "/geɪdʒ/", "explain": "long vowel /eɪ/ — the odd one out" },
+      { "word": "autumn", "underline": "au", "ipa": "/ˈɔːtəm/", "explain": "diphthong /ɔː/" },
+      { "word": "applause", "underline": "au", "ipa": "/əˈplɔːz/", "explain": "diphthong /ɔː/" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 2, "options": [
+      { "word": "chorus", "underline": "ch", "ipa": "/ˈkɔːrəs/", "explain": "\"ch\" said as /k/" },
+      { "word": "chemist", "underline": "ch", "ipa": "/ˈkemɪst/", "explain": "\"ch\" said as /k/" },
+      { "word": "brochure", "underline": "ch", "ipa": "/broʊˈʃʊr/", "explain": "\"ch\" said as /ʃ/ — the odd one out" },
+      { "word": "echo", "underline": "ch", "ipa": "/ˈekoʊ/", "explain": "\"ch\" said as /k/" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 3, "options": [
+      { "word": "climbs", "underline": "s", "ipa": "/klaɪmz/", "explain": "\"s\" said as /z/" },
+      { "word": "believes", "underline": "s", "ipa": "/bɪˈliːvz/", "explain": "\"s\" said as /z/" },
+      { "word": "receives", "underline": "s", "ipa": "/rɪˈsiːvz/", "explain": "\"s\" said as /z/" },
+      { "word": "practices", "underline": "es", "ipa": "/ˈpræktɪsɪz/", "explain": "\"es\" adds an extra syllable /ɪz/ — the odd one out" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 0, "options": [
+      { "word": "rhythm", "underline": "th", "ipa": "/ˈrɪðəm/", "explain": "voiced /ð/ — the odd one out" },
+      { "word": "monthly", "underline": "th", "ipa": "/ˈmʌnθli/", "explain": "voiceless /θ/" },
+      { "word": "wealthy", "underline": "th", "ipa": "/ˈwelθi/", "explain": "voiceless /θ/" },
+      { "word": "healthy", "underline": "th", "ipa": "/ˈhelθi/", "explain": "voiceless /θ/" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 1, "options": [
+      { "word": "escape", "underline": "a", "ipa": "/ɪˈskeɪp/", "explain": "long vowel /eɪ/" },
+      { "word": "imagine", "underline": "a", "ipa": "/ɪˈmædʒɪn/", "explain": "short vowel /æ/ — the odd one out" },
+      { "word": "locate", "underline": "a", "ipa": "/ˈloʊkeɪt/", "explain": "long vowel /eɪ/" },
+      { "word": "debate", "underline": "a", "ipa": "/dɪˈbeɪt/", "explain": "long vowel /eɪ/" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 2, "options": [
+      { "word": "surprise", "underline": "i", "ipa": "/sərˈpraɪz/", "explain": "diphthong /aɪ/" },
+      { "word": "device", "underline": "i", "ipa": "/dɪˈvaɪs/", "explain": "diphthong /aɪ/" },
+      { "word": "finish", "underline": "i", "ipa": "/ˈfɪnɪʃ/", "explain": "short vowel /ɪ/ — the odd one out" },
+      { "word": "combine", "underline": "i", "ipa": "/kəmˈbaɪn/", "explain": "diphthong /aɪ/" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 3, "options": [
+      { "word": "approve", "underline": "o", "ipa": "/əˈpruːv/", "explain": "long vowel /uː/" },
+      { "word": "remove", "underline": "o", "ipa": "/rɪˈmuːv/", "explain": "long vowel /uː/" },
+      { "word": "improve", "underline": "o", "ipa": "/ɪmˈpruːv/", "explain": "long vowel /uː/" },
+      { "word": "promise", "underline": "o", "ipa": "/ˈprɒmɪs/", "explain": "short vowel /ɒ/ — the odd one out" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 0, "options": [
+      { "word": "humor", "underline": "u", "ipa": "/ˈhjuːmər/", "explain": "glide + vowel /juː/ — the odd one out" },
+      { "word": "truth", "underline": "u", "ipa": "/truːθ/", "explain": "long vowel /uː/" },
+      { "word": "rumor", "underline": "u", "ipa": "/ˈruːmər/", "explain": "long vowel /uː/" },
+      { "word": "stupid", "underline": "u", "ipa": "/ˈstuːpɪd/", "explain": "long vowel /uː/" }
+    ]},
+    { "part": "pronunciation", "partLabel": "Pronunciation", "prompt": "Which underlined letters are pronounced differently from the other three?", "answer": 1, "options": [
+      { "word": "relief", "underline": "ie", "ipa": "/rɪˈliːf/", "explain": "long vowel /iː/" },
+      { "word": "friend", "underline": "ie", "ipa": "/frend/", "explain": "short vowel /e/ — the odd one out" },
+      { "word": "achieve", "underline": "ie", "ipa": "/əˈtʃiːv/", "explain": "long vowel /iː/" },
+      { "word": "thief", "underline": "ie", "ipa": "/θiːf/", "explain": "long vowel /iː/" }
+    ]},
+
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 2, "options": [
+      { "word": "photograph", "ipa": "/ˈfoʊtəgræf/", "explain": "PHO-to-graph — stress on the 1st syllable" },
+      { "word": "paragraph", "ipa": "/ˈpærəgræf/", "explain": "PAR-a-graph — stress on the 1st syllable" },
+      { "word": "photographer", "ipa": "/fəˈtɒgrəfər/", "explain": "pho-TOG-ra-pher — stress on the 2nd syllable, the odd one out" },
+      { "word": "calendar", "ipa": "/ˈkælɪndər/", "explain": "CAL-en-dar — stress on the 1st syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 3, "options": [
+      { "word": "industry", "ipa": "/ˈɪndəstri/", "explain": "IN-dus-try — stress on the 1st syllable" },
+      { "word": "accident", "ipa": "/ˈæksɪdənt/", "explain": "AC-ci-dent — stress on the 1st syllable" },
+      { "word": "continent", "ipa": "/ˈkɒntɪnənt/", "explain": "CON-ti-nent — stress on the 1st syllable" },
+      { "word": "authority", "ipa": "/ɔːˈθɒrəti/", "explain": "au-THOR-i-ty — stress on the 2nd syllable, the odd one out" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 0, "options": [
+      { "word": "announcement", "ipa": "/əˈnaʊnsmənt/", "explain": "an-NOUNCE-ment — stress on the 2nd syllable, the odd one out" },
+      { "word": "government", "ipa": "/ˈgʌvərnmənt/", "explain": "GOV-ern-ment — stress on the 1st syllable" },
+      { "word": "parliament", "ipa": "/ˈpɑːrləmənt/", "explain": "PAR-lia-ment — stress on the 1st syllable" },
+      { "word": "president", "ipa": "/ˈprezɪdənt/", "explain": "PRES-i-dent — stress on the 1st syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 1, "options": [
+      { "word": "technology", "ipa": "/tekˈnɒlədʒi/", "explain": "tech-NOL-o-gy — stress on the 2nd syllable" },
+      { "word": "category", "ipa": "/ˈkætəgɔːri/", "explain": "CAT-e-go-ry — stress on the 1st syllable, the odd one out" },
+      { "word": "geography", "ipa": "/dʒiˈɒgrəfi/", "explain": "ge-OG-ra-phy — stress on the 2nd syllable" },
+      { "word": "biology", "ipa": "/baɪˈɒlədʒi/", "explain": "bi-OL-o-gy — stress on the 2nd syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 2, "options": [
+      { "word": "musician", "ipa": "/mjuˈzɪʃən/", "explain": "mu-SI-cian — stress on the 2nd syllable" },
+      { "word": "reporter", "ipa": "/rɪˈpɔːrtər/", "explain": "re-POR-ter — stress on the 2nd syllable" },
+      { "word": "volunteer", "ipa": "/ˌvɒlənˈtɪr/", "explain": "vol-un-TEER — stress on the 3rd (final) syllable, the odd one out" },
+      { "word": "decision", "ipa": "/dɪˈsɪʒən/", "explain": "de-CI-sion — stress on the 2nd syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 3, "options": [
+      { "word": "available", "ipa": "/əˈveɪləbəl/", "explain": "a-VAIL-a-ble — stress on the 2nd syllable" },
+      { "word": "impossible", "ipa": "/ɪmˈpɒsəbəl/", "explain": "im-POS-si-ble — stress on the 2nd syllable" },
+      { "word": "responsible", "ipa": "/rɪˈspɒnsəbəl/", "explain": "re-SPON-si-ble — stress on the 2nd syllable" },
+      { "word": "necessary", "ipa": "/ˈnesəseri/", "explain": "NEC-es-sar-y — stress on the 1st syllable, the odd one out" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 0, "options": [
+      { "word": "familiar", "ipa": "/fəˈmɪljər/", "explain": "fa-MIL-iar — stress on the 2nd syllable, the odd one out" },
+      { "word": "confident", "ipa": "/ˈkɒnfɪdənt/", "explain": "CON-fi-dent — stress on the 1st syllable" },
+      { "word": "obvious", "ipa": "/ˈɒbviəs/", "explain": "OB-vi-ous — stress on the 1st syllable" },
+      { "word": "curious", "ipa": "/ˈkjʊəriəs/", "explain": "CU-ri-ous — stress on the 1st syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 1, "options": [
+      { "word": "understand", "ipa": "/ˌʌndərˈstænd/", "explain": "un-der-STAND — stress on the 3rd (final) syllable" },
+      { "word": "beautiful", "ipa": "/ˈbjuːtɪfəl/", "explain": "BEAU-ti-ful — stress on the 1st syllable, the odd one out" },
+      { "word": "overcome", "ipa": "/ˌoʊvərˈkʌm/", "explain": "o-ver-COME — stress on the 3rd (final) syllable" },
+      { "word": "recommend", "ipa": "/ˌrekəˈmend/", "explain": "rec-om-MEND — stress on the 3rd (final) syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 2, "options": [
+      { "word": "achievement", "ipa": "/əˈtʃiːvmənt/", "explain": "a-CHIEVE-ment — stress on the 2nd syllable" },
+      { "word": "excitement", "ipa": "/ɪkˈsaɪtmənt/", "explain": "ex-CITE-ment — stress on the 2nd syllable" },
+      { "word": "confidence", "ipa": "/ˈkɒnfɪdəns/", "explain": "CON-fi-dence — stress on the 1st syllable, the odd one out" },
+      { "word": "enjoyment", "ipa": "/ɪnˈdʒɔɪmənt/", "explain": "en-JOY-ment — stress on the 2nd syllable" }
+    ]},
+    { "part": "stress", "partLabel": "Word stress", "prompt": "Which word has primary stress on a different syllable from the other three?", "answer": 3, "options": [
+      { "word": "disappoint", "ipa": "/ˌdɪsəˈpɔɪnt/", "explain": "dis-ap-POINT — stress on the 3rd (final) syllable" },
+      { "word": "entertain", "ipa": "/ˌentərˈteɪn/", "explain": "en-ter-TAIN — stress on the 3rd (final) syllable" },
+      { "word": "engineer", "ipa": "/ˌendʒɪˈnɪr/", "explain": "en-gi-NEER — stress on the 3rd (final) syllable" },
+      { "word": "difficult", "ipa": "/ˈdɪfɪkəlt/", "explain": "DIF-fi-cult — stress on the 1st syllable, the odd one out" }
+    ]}
+  ]
+}

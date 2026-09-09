@@ -64,6 +64,20 @@
     font-size:0.85rem;
   }
   .loader-bar .lbl{ color:#5a6b63; margin-right:2px; }
+  .preset-select{
+    background:#fff;
+    border:1.5px solid #c9c2a8;
+    border-radius:6px;
+    padding:9px 10px;
+    min-height:40px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    color:var(--teal);
+    cursor:pointer;
+    touch-action:manipulation;
+    max-width:100%;
+  }
   .file-btn{
     display:inline-flex;
     align-items:center;
@@ -240,6 +254,10 @@
 
   <div class="loader-bar">
     <span class="lbl">Word list:</span>
+    <select id="presetSelect" class="preset-select">
+      <option value="">Choose a hosted list…</option>
+    </select>
+    <span class="lbl">or</span>
     <label class="file-btn" for="fileInput">Load .json file</label>
     <input type="file" id="fileInput" accept="application/json,.json">
     <button class="reset-link" id="resetLink" onclick="loadDefault()">use built-in list</button>
@@ -402,6 +420,52 @@ const pageTitle = document.getElementById("pageTitle");
 const pageSubtitle = document.getElementById("pageSubtitle");
 const loadMsg = document.getElementById("loadMsg");
 const fileInput = document.getElementById("fileInput");
+const presetSelect = document.getElementById("presetSelect");
+
+// ---------- hosted word lists ----------
+// Add an entry here for every .json word-list file you upload to this
+// same repo/folder as this HTML file. "file" must match the filename
+// exactly (case-sensitive on GitHub Pages).
+const PRESETS = [
+  { label: "Set 1 — Grade 8 basics", file: "words_template.json" },
+  { label: "Set 2 — new vocabulary", file: "words_set2.json" },
+  { label: "Set 3 — harder", file: "words_set3_harder.json" }
+];
+
+PRESETS.forEach(p => {
+  const o = document.createElement("option");
+  o.value = p.file;
+  o.textContent = p.label;
+  presetSelect.appendChild(o);
+});
+
+presetSelect.addEventListener("change", (e) => {
+  const file = e.target.value;
+  if(!file) return;
+  loadMsg.textContent = "Loading…";
+  loadMsg.className = "load-msg";
+  fetch(file)
+    .then(res => {
+      if(!res.ok) throw new Error(`${file} not found (${res.status})`);
+      return res.json();
+    })
+    .then(data => {
+      const err = validate(data);
+      if(err){
+        loadMsg.textContent = err;
+        loadMsg.className = "load-msg err";
+        return;
+      }
+      applyData(data);
+      fileInput.value = "";
+      loadMsg.textContent = `Loaded "${file}" (${data.questions.length} questions)`;
+      loadMsg.className = "load-msg ok";
+    })
+    .catch(() => {
+      loadMsg.textContent = `Couldn't load ${file}. Make sure it's uploaded to the same folder as this page.`;
+      loadMsg.className = "load-msg err";
+    });
+});
 
 function wordHtml(opt){
   if(!opt.underline) return opt.word;
