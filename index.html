@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Pronunciation &amp; Stress Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fbf9f3;
+    --ink:#1f2d28;
+    --teal:#16423c;
+    --teal-soft:#c9ddd6;
+    --mustard:#d99a2b;
+    --mustard-soft:#f3decb;
+    --wrong:#b5433a;
+    --wrong-soft:#f3d9d5;
+    --correct:#2f6b4f;
+    --correct-soft:#d6e7dc;
+    --line:#e3ddcc;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  body{
+    background:
+      repeating-linear-gradient(to bottom, transparent 0px, transparent 34px, var(--line) 35px),
+      var(--paper);
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:40px 16px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-bottom: max(40px, env(safe-area-inset-bottom));
+  }
+  .wrap{ width:100%; max-width:680px; }
+  header{ margin-bottom:18px; }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.6rem;
+    margin:0 0 4px 0;
+    color:var(--teal);
+    letter-spacing:-0.01em;
+  }
+  .sub{ font-size:0.92rem; color:#5a6b63; }
+
+  .loader-bar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    background:#f2efe4;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 12px;
+    margin:16px 0 4px 0;
+    font-size:0.85rem;
+  }
+  .loader-bar .lbl{ color:#5a6b63; margin-right:2px; }
+  .file-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#fff;
+    border:1.5px solid #c9c2a8;
+    border-radius:6px;
+    padding:10px 14px;
+    min-height:40px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.85rem;
+    color:var(--teal);
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .file-btn:hover{ border-color:var(--teal); }
+  }
+  .file-btn:active{ background:#f6f4ec; }
+  #fileInput{ display:none; }
+  .reset-link{
+    background:none;
+    border:none;
+    color:#8a8471;
+    font-size:0.85rem;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:10px 4px;
+    font-family:'Inter',sans-serif;
+    touch-action:manipulation;
+  }
+  .load-msg{ font-size:0.83rem; }
+  .load-msg.ok{ color:var(--correct); }
+  .load-msg.err{ color:var(--wrong); }
+
+  .progress-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:6px 12px;
+    margin:20px 0 10px 0;
+    font-size:0.85rem;
+    color:#5a6b63;
+  }
+  .progress-track{
+    height:6px;
+    background:var(--teal-soft);
+    border-radius:3px;
+    overflow:hidden;
+    margin-bottom:22px;
+  }
+  .progress-fill{ height:100%; background:var(--teal); border-radius:3px; transition:width .35s ease; }
+
+  .card{
+    background:#fffefb;
+    border:1px solid var(--line);
+    border-left:5px solid var(--teal);
+    border-radius:10px;
+    padding:28px 26px 24px 24px;
+    box-shadow:0 1px 3px rgba(31,45,40,0.06);
+  }
+  .card.stress{ border-left-color:var(--mustard); }
+  .part-label{ font-size:0.82rem; font-weight:600; color:var(--teal); margin-bottom:14px; }
+  .card.stress .part-label{ color:var(--mustard); }
+  .prompt{ font-family:'Fraunces',serif; font-size:1.22rem; line-height:1.45; margin:0 0 22px 0; color:var(--ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:center; gap:12px; width:100%; text-align:left;
+    background:#fff; border:1.5px solid #ded6bf; border-radius:8px;
+    padding:15px 16px; min-height:44px; font-family:'Inter',sans-serif; font-size:1.02rem; color:var(--ink);
+    cursor:pointer; transition:border-color .15s ease, background .15s ease;
+    touch-action:manipulation; -webkit-user-select:none; user-select:none;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .opt:hover:not(.locked){ border-color:var(--teal); background:#f6f4ec; }
+  }
+  .opt:active:not(.locked){ background:#f0eee2; }
+  .opt .letter{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%; border:1.5px solid #c9c2a8;
+    font-size:0.84rem; font-weight:600; flex-shrink:0; color:#7a7d75;
+  }
+  .opt .word u{ text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:2px; }
+  .opt .ipa{ margin-left:auto; font-size:0.86rem; color:#8a8471; font-style:italic; }
+  .opt.selected-correct{ background:var(--correct-soft); border-color:var(--correct); }
+  .opt.selected-correct .letter{ background:var(--correct); border-color:var(--correct); color:#fff; }
+  .opt.selected-wrong{ background:var(--wrong-soft); border-color:var(--wrong); }
+  .opt.selected-wrong .letter{ background:var(--wrong); border-color:var(--wrong); color:#fff; }
+  .opt.reveal-correct{ border-color:var(--correct); }
+  .opt.reveal-correct .letter{ background:var(--correct); border-color:var(--correct); color:#fff; }
+  .opt.locked{ cursor:default; }
+
+  .feedback{ margin-top:20px; padding-top:18px; border-top:1px dashed var(--line); display:none; }
+  .feedback.show{ display:block; }
+  .verdict{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; margin-bottom:14px; }
+  .verdict.correct{ color:var(--correct); }
+  .verdict.wrong{ color:var(--wrong); }
+  .explain-list{ display:flex; flex-direction:column; gap:9px; }
+  .explain-row{ display:flex; gap:10px; align-items:flex-start; font-size:0.93rem; line-height:1.4; }
+  .explain-row .mark{ width:18px; flex-shrink:0; font-weight:700; margin-top:1px; }
+  .explain-row.is-correct .mark{ color:var(--correct); }
+  .explain-row.is-wrong .mark{ color:#a89f86; }
+  .explain-row b{ font-weight:600; }
+  .explain-row .ipa-tag{ font-style:italic; color:#8a8471; }
+
+  .nav-row{ display:flex; justify-content:space-between; align-items:center; margin-top:24px; gap:12px; }
+  button.nav{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.95rem;
+    padding:12px 20px; min-height:44px; border-radius:7px; border:1.5px solid var(--teal);
+    background:#fff; color:var(--teal); cursor:pointer;
+    touch-action:manipulation; -webkit-user-select:none; user-select:none;
+  }
+  button.nav:disabled{ opacity:0.35; cursor:not-allowed; }
+  button.nav.primary{ background:var(--teal); color:#fff; }
+  button.nav.primary:disabled{ background:#a9c0b8; border-color:#a9c0b8; }
+  button.nav:active:not(:disabled){ opacity:0.8; }
+
+  .results{ text-align:center; padding:10px 4px; }
+  .score-big{ font-family:'Fraunces',serif; font-weight:700; font-size:3rem; color:var(--teal); margin:6px 0 2px 0; }
+  .score-label{ color:#5a6b63; font-size:0.95rem; margin-bottom:22px; }
+  .review-list{ text-align:left; display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+  .review-block{ border-radius:8px; background:#f6f4ec; padding:12px 14px; }
+  .review-block.wrong{ background:var(--wrong-soft); }
+  .review-head{ display:flex; justify-content:space-between; font-size:0.87rem; margin-bottom:8px; }
+  .review-head .qn{ color:#5a6b63; }
+  .review-head .verdict-tag{ font-weight:600; }
+  .review-block.wrong .review-head .verdict-tag{ color:var(--wrong); }
+  .review-block:not(.wrong) .review-head .verdict-tag{ color:var(--correct); }
+  .review-words{ display:flex; flex-direction:column; gap:4px; }
+  .review-word{ display:flex; justify-content:space-between; gap:10px; font-size:0.87rem; padding:2px 0; }
+  .review-word.is-correct{ font-weight:600; color:var(--correct); }
+  .review-word .rw-ipa{ font-style:italic; color:#7d7660; }
+  .results-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .restart-btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.95rem;
+    padding:13px 24px; min-height:44px; border-radius:7px; border:none;
+    background:var(--teal); color:#fff; cursor:pointer;
+    touch-action:manipulation; -webkit-user-select:none; user-select:none;
+  }
+  .restart-btn:active{ opacity:0.85; }
+  .save-btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.95rem;
+    padding:13px 24px; min-height:44px; border-radius:7px;
+    border:1.5px solid var(--teal); background:#fff; color:var(--teal); cursor:pointer;
+    touch-action:manipulation; -webkit-user-select:none; user-select:none;
+  }
+  .save-btn:active{ background:#f6f4ec; }
+  .save-msg{
+    font-size:0.83rem;
+    color:var(--correct);
+    margin-top:10px;
+    min-height:1em;
+  }
+
+  .empty-state{ text-align:center; color:#5a6b63; font-size:0.95rem; padding:30px 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1 id="pageTitle">Pronunciation &amp; Stress Practice</h1>
+    <div class="sub" id="pageSubtitle">Grade 8 · 20 questions · one word pattern at a time</div>
+  </header>
+
+  <div class="loader-bar">
+    <span class="lbl">Word list:</span>
+    <label class="file-btn" for="fileInput">Load .json file</label>
+    <input type="file" id="fileInput" accept="application/json,.json">
+    <button class="reset-link" id="resetLink" onclick="loadDefault()">use built-in list</button>
+    <span class="load-msg" id="loadMsg"></span>
+  </div>
+
+  <div class="progress-row">
+    <span id="progressText">Question 1 of 20</span>
+    <span id="partText">Part 1: Pronunciation</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:5%"></div></div>
+
+  <div id="quizArea"></div>
+</div>
+
+<script>
+// ---------- built-in default word list (fallback) ----------
+const DEFAULT_DATA = {
+  title: "Pronunciation & Stress Practice",
+  subtitle: "Grade 8 · 20 questions · one word pattern at a time",
+  questions: [
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:0, options:[
+      {word:"foot", underline:"oo", ipa:"/fʊt/", explain:"short vowel /ʊ/ — the odd one out"},
+      {word:"food", underline:"oo", ipa:"/fuːd/", explain:"long vowel /uː/"},
+      {word:"moon", underline:"oo", ipa:"/muːn/", explain:"long vowel /uː/"},
+      {word:"spoon", underline:"oo", ipa:"/spuːn/", explain:"long vowel /uː/"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:0, options:[
+      {word:"school", underline:"ch", ipa:"/skuːl/", explain:"\"ch\" said as /k/ — the odd one out"},
+      {word:"chair", underline:"ch", ipa:"/tʃeər/", explain:"\"ch\" said as /tʃ/"},
+      {word:"teacher", underline:"ch", ipa:"/ˈtiːtʃər/", explain:"\"ch\" said as /tʃ/"},
+      {word:"children", underline:"ch", ipa:"/ˈtʃɪldrən/", explain:"\"ch\" said as /tʃ/"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:3, options:[
+      {word:"dogs", underline:"s", ipa:"/dɒgz/", explain:"\"s\" said as /z/"},
+      {word:"bags", underline:"s", ipa:"/bægz/", explain:"\"s\" said as /z/"},
+      {word:"cars", underline:"s", ipa:"/kɑːrz/", explain:"\"s\" said as /z/"},
+      {word:"cats", underline:"s", ipa:"/kæts/", explain:"\"s\" said as /s/ after a voiceless \"t\" — the odd one out"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:3, options:[
+      {word:"played", underline:"ed", ipa:"/pleɪd/", explain:"\"ed\" said as /d/"},
+      {word:"cleaned", underline:"ed", ipa:"/kliːnd/", explain:"\"ed\" said as /d/"},
+      {word:"lived", underline:"ed", ipa:"/lɪvd/", explain:"\"ed\" said as /d/"},
+      {word:"watched", underline:"ed", ipa:"/wɒtʃt/", explain:"\"ed\" said as /t/ after a voiceless \"ch\" — the odd one out"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:0, options:[
+      {word:"think", underline:"th", ipa:"/θɪŋk/", explain:"voiceless /θ/ — the odd one out"},
+      {word:"this", underline:"th", ipa:"/ðɪs/", explain:"voiced /ð/"},
+      {word:"that", underline:"th", ipa:"/ðæt/", explain:"voiced /ð/"},
+      {word:"mother", underline:"th", ipa:"/ˈmʌðər/", explain:"voiced /ð/"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:3, options:[
+      {word:"cake", underline:"a", ipa:"/keɪk/", explain:"long vowel /eɪ/"},
+      {word:"plate", underline:"a", ipa:"/pleɪt/", explain:"long vowel /eɪ/"},
+      {word:"date", underline:"a", ipa:"/deɪt/", explain:"long vowel /eɪ/"},
+      {word:"cat", underline:"a", ipa:"/kæt/", explain:"short vowel /æ/ — the odd one out"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:3, options:[
+      {word:"kite", underline:"i", ipa:"/kaɪt/", explain:"long vowel /aɪ/"},
+      {word:"nine", underline:"i", ipa:"/naɪn/", explain:"long vowel /aɪ/"},
+      {word:"rice", underline:"i", ipa:"/raɪs/", explain:"long vowel /aɪ/"},
+      {word:"is", underline:"i", ipa:"/ɪz/", explain:"short vowel /ɪ/ — the odd one out"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:3, options:[
+      {word:"go", underline:"o", ipa:"/goʊ/", explain:"diphthong /oʊ/"},
+      {word:"no", underline:"o", ipa:"/noʊ/", explain:"diphthong /oʊ/"},
+      {word:"so", underline:"o", ipa:"/soʊ/", explain:"diphthong /oʊ/"},
+      {word:"do", underline:"o", ipa:"/duː/", explain:"long vowel /uː/ — the odd one out"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:2, options:[
+      {word:"cup", underline:"u", ipa:"/kʌp/", explain:"short vowel /ʌ/"},
+      {word:"sun", underline:"u", ipa:"/sʌn/", explain:"short vowel /ʌ/"},
+      {word:"music", underline:"u", ipa:"/ˈmjuːzɪk/", explain:"glide + vowel /juː/ — the odd one out"},
+      {word:"run", underline:"u", ipa:"/rʌn/", explain:"short vowel /ʌ/"}
+    ]},
+    { part:"pronunciation", partLabel:"Pronunciation", prompt:"Which underlined letters are pronounced differently from the other three?", answer:3, options:[
+      {word:"meat", underline:"ea", ipa:"/miːt/", explain:"long vowel /iː/"},
+      {word:"read", underline:"ea", ipa:"/riːd/", explain:"long vowel /iː/ (present tense)"},
+      {word:"each", underline:"ea", ipa:"/iːtʃ/", explain:"long vowel /iː/"},
+      {word:"break", underline:"ea", ipa:"/breɪk/", explain:"diphthong /eɪ/ — the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:3, options:[
+      {word:"family", ipa:"/ˈfæməli/", explain:"FAM-i-ly — stress on the 1st syllable"},
+      {word:"holiday", ipa:"/ˈhɒlədeɪ/", explain:"HOL-i-day — stress on the 1st syllable"},
+      {word:"weekend", ipa:"/ˈwiːkend/", explain:"WEEK-end — stress on the 1st syllable"},
+      {word:"invite", ipa:"/ɪnˈvaɪt/", explain:"in-VITE — stress on the 2nd syllable, the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:1, options:[
+      {word:"hobby", ipa:"/ˈhɒbi/", explain:"HOB-by — stress on the 1st syllable"},
+      {word:"remember", ipa:"/rɪˈmembər/", explain:"re-MEM-ber — stress on the 2nd syllable, the odd one out"},
+      {word:"morning", ipa:"/ˈmɔːrnɪŋ/", explain:"MOR-ning — stress on the 1st syllable"},
+      {word:"window", ipa:"/ˈwɪndoʊ/", explain:"WIN-dow — stress on the 1st syllable"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:0, options:[
+      {word:"begin", ipa:"/bɪˈgɪn/", explain:"be-GIN — stress on the 2nd syllable, the odd one out"},
+      {word:"open", ipa:"/ˈoʊpən/", explain:"O-pen — stress on the 1st syllable"},
+      {word:"listen", ipa:"/ˈlɪsən/", explain:"LIS-ten — stress on the 1st syllable"},
+      {word:"happen", ipa:"/ˈhæpən/", explain:"HAP-pen — stress on the 1st syllable"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:3, options:[
+      {word:"comfortable", ipa:"/ˈkʌmftərbəl/", explain:"COM-fort-a-ble — stress on the 1st syllable"},
+      {word:"popular", ipa:"/ˈpɒpjələr/", explain:"POP-u-lar — stress on the 1st syllable"},
+      {word:"natural", ipa:"/ˈnætʃrəl/", explain:"NAT-u-ral — stress on the 1st syllable"},
+      {word:"important", ipa:"/ɪmˈpɔːrtənt/", explain:"im-POR-tant — stress on the 2nd syllable, the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:2, options:[
+      {word:"dangerous", ipa:"/ˈdeɪndʒərəs/", explain:"DAN-ger-ous — stress on the 1st syllable"},
+      {word:"envelope", ipa:"/ˈenvəloʊp/", explain:"EN-ve-lope — stress on the 1st syllable"},
+      {word:"tomato", ipa:"/təˈmeɪtoʊ/", explain:"to-MA-to — stress on the 2nd syllable, the odd one out"},
+      {word:"animal", ipa:"/ˈænɪməl/", explain:"AN-i-mal — stress on the 1st syllable"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:3, options:[
+      {word:"mountain", ipa:"/ˈmaʊntən/", explain:"MOUN-tain — stress on the 1st syllable"},
+      {word:"village", ipa:"/ˈvɪlɪdʒ/", explain:"VIL-lage — stress on the 1st syllable"},
+      {word:"farmer", ipa:"/ˈfɑːrmər/", explain:"FARM-er — stress on the 1st syllable"},
+      {word:"arrive", ipa:"/əˈraɪv/", explain:"ar-RIVE — stress on the 2nd syllable, the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:3, options:[
+      {word:"cinema", ipa:"/ˈsɪnəmə/", explain:"CIN-e-ma — stress on the 1st syllable"},
+      {word:"camera", ipa:"/ˈkæmərə/", explain:"CAM-e-ra — stress on the 1st syllable"},
+      {word:"chicken", ipa:"/ˈtʃɪkɪn/", explain:"CHICK-en — stress on the 1st syllable"},
+      {word:"guitar", ipa:"/gɪˈtɑːr/", explain:"gui-TAR — stress on the 2nd syllable, the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:3, options:[
+      {word:"relax", ipa:"/rɪˈlæks/", explain:"re-LAX — stress on the 2nd syllable"},
+      {word:"repeat", ipa:"/rɪˈpiːt/", explain:"re-PEAT — stress on the 2nd syllable"},
+      {word:"pollution", ipa:"/pəˈluːʃən/", explain:"pol-LU-tion — stress on the 2nd syllable"},
+      {word:"planet", ipa:"/ˈplænɪt/", explain:"PLAN-et — stress on the 1st syllable, the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:3, options:[
+      {word:"robot", ipa:"/ˈroʊbɒt/", explain:"RO-bot — stress on the 1st syllable"},
+      {word:"moment", ipa:"/ˈmoʊmənt/", explain:"MO-ment — stress on the 1st syllable"},
+      {word:"weather", ipa:"/ˈweðər/", explain:"WEATH-er — stress on the 1st syllable"},
+      {word:"decide", ipa:"/dɪˈsaɪd/", explain:"de-CIDE — stress on the 2nd syllable, the odd one out"}
+    ]},
+    { part:"stress", partLabel:"Word stress", prompt:"Which word has primary stress on a different syllable from the other three?", answer:1, options:[
+      {word:"student", ipa:"/ˈstuːdənt/", explain:"STU-dent — stress on the 1st syllable"},
+      {word:"prepare", ipa:"/prɪˈper/", explain:"pre-PARE — stress on the 2nd syllable, the odd one out"},
+      {word:"letter", ipa:"/ˈletər/", explain:"LET-ter — stress on the 1st syllable"},
+      {word:"sister", ipa:"/ˈsɪstər/", explain:"SIS-ter — stress on the 1st syllable"}
+    ]}
+  ]
+};
+
+// ---------- state ----------
+let quizData = DEFAULT_DATA;
+let questions = quizData.questions;
+let letters = ["A","B","C","D"];
+let current = 0;
+let userAnswers = [];
+let started = false;
+let startTime = null;
+let endTime = null;
+
+const quizArea = document.getElementById("quizArea");
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
+const partText = document.getElementById("partText");
+const pageTitle = document.getElementById("pageTitle");
+const pageSubtitle = document.getElementById("pageSubtitle");
+const loadMsg = document.getElementById("loadMsg");
+const fileInput = document.getElementById("fileInput");
+
+function wordHtml(opt){
+  if(!opt.underline) return opt.word;
+  const idx = opt.word.indexOf(opt.underline);
+  if(idx === -1) return opt.word;
+  return opt.word.slice(0, idx) + "<u>" + opt.word.slice(idx, idx + opt.underline.length) + "</u>" + opt.word.slice(idx + opt.underline.length);
+}
+
+function applyData(data){
+  quizData = data;
+  questions = data.questions;
+  userAnswers = new Array(questions.length).fill(null);
+  current = 0;
+  started = false;
+  startTime = null;
+  endTime = null;
+  pageTitle.textContent = data.title || "Pronunciation & Stress Practice";
+  pageSubtitle.textContent = data.subtitle || `${questions.length} questions`;
+  render();
+}
+
+function loadDefault(){
+  loadMsg.textContent = "";
+  loadMsg.className = "load-msg";
+  fileInput.value = "";
+  applyData(DEFAULT_DATA);
+}
+
+function validate(data){
+  if(!data || !Array.isArray(data.questions) || data.questions.length === 0){
+    return "File must have a non-empty \"questions\" array.";
+  }
+  for(let i = 0; i < data.questions.length; i++){
+    const q = data.questions[i];
+    if(!q.prompt || !Array.isArray(q.options) || q.options.length !== 4 || typeof q.answer !== "number"){
+      return `Question ${i+1} is missing "prompt", exactly 4 "options", or a numeric "answer".`;
+    }
+    for(const opt of q.options){
+      if(!opt.word) return `Question ${i+1} has an option with no "word".`;
+    }
+  }
+  return null;
+}
+
+fileInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (evt) => {
+    try{
+      const data = JSON.parse(evt.target.result);
+      const err = validate(data);
+      if(err){
+        loadMsg.textContent = err;
+        loadMsg.className = "load-msg err";
+        return;
+      }
+      applyData(data);
+      loadMsg.textContent = `Loaded "${file.name}" (${data.questions.length} questions)`;
+      loadMsg.className = "load-msg ok";
+    }catch(err){
+      loadMsg.textContent = "Couldn't read that file as valid JSON.";
+      loadMsg.className = "load-msg err";
+    }
+  };
+  reader.readAsText(file);
+});
+
+function renderStart(){
+  progressText.textContent = `${questions.length} questions`;
+  progressFill.style.width = "0%";
+  partText.textContent = "Not started";
+
+  const parts = [...new Set(questions.map(q => q.partLabel || q.part).filter(Boolean))];
+
+  quizArea.innerHTML = `
+    <div class="card">
+      <div class="results">
+        <div class="part-label" style="justify-content:center; display:flex;">Ready when you are</div>
+        <p class="prompt" style="text-align:center;">${quizData.title || "Practice Test"}</p>
+        <div class="score-label">${questions.length} questions${parts.length ? " · " + parts.join(" & ") : ""}</div>
+        <button class="restart-btn" onclick="startTest()">Start test</button>
+      </div>
+    </div>`;
+}
+
+function startTest(){
+  started = true;
+  startTime = Date.now();
+  endTime = null;
+  current = 0;
+  userAnswers = new Array(questions.length).fill(null);
+  render();
+}
+
+function render(){
+  if(questions.length === 0){
+    quizArea.innerHTML = `<div class="card"><div class="empty-state">No questions loaded.</div></div>`;
+    return;
+  }
+  if(!started){
+    renderStart();
+    return;
+  }
+  if(current >= questions.length){
+    renderResults();
+    return;
+  }
+  const q = questions[current];
+  progressText.textContent = `Question ${current+1} of ${questions.length}`;
+  progressFill.style.width = `${((current+1)/questions.length)*100}%`;
+  partText.textContent = q.partLabel || (q.part ? q.part.charAt(0).toUpperCase() + q.part.slice(1) : "");
+
+  const chosen = userAnswers[current];
+  const answered = chosen !== null;
+
+  let optionsHtml = "";
+  q.options.forEach((opt, i) => {
+    let cls = "opt";
+    if(answered){
+      cls += " locked";
+      if(i === chosen && i === q.answer) cls += " selected-correct";
+      else if(i === chosen && i !== q.answer) cls += " selected-wrong";
+      else if(i === q.answer) cls += " reveal-correct";
+    }
+    optionsHtml += `
+      <button class="${cls}" onclick="selectOption(${i})" ${answered ? "disabled" : ""}>
+        <span class="letter">${letters[i]}</span>
+        <span class="word">${wordHtml(opt)}</span>
+        ${answered && opt.ipa ? `<span class="ipa">${opt.ipa}</span>` : ""}
+      </button>`;
+  });
+
+  let feedbackHtml = "";
+  if(answered){
+    const wasCorrect = chosen === q.answer;
+    let explainRows = "";
+    q.options.forEach((opt, i) => {
+      const isAns = i === q.answer;
+      explainRows += `
+        <div class="explain-row ${isAns ? "is-correct" : "is-wrong"}">
+          <span class="mark">${isAns ? "✓" : "·"}</span>
+          <span><b>${letters[i]}. ${opt.word}</b> ${opt.ipa ? `<span class="ipa-tag">${opt.ipa}</span>` : ""} — ${opt.explain || ""}</span>
+        </div>`;
+    });
+    feedbackHtml = `
+      <div class="feedback show">
+        <div class="verdict ${wasCorrect ? "correct" : "wrong"}">${wasCorrect ? "Correct!" : "Not quite — here's why:"}</div>
+        <div class="explain-list">${explainRows}</div>
+      </div>`;
+  }
+
+  quizArea.innerHTML = `
+    <div class="card ${q.part === "stress" ? "stress" : ""}">
+      <div class="part-label">${q.partLabel || q.part || ""}</div>
+      <p class="prompt">${q.prompt}</p>
+      <div class="options">${optionsHtml}</div>
+      ${feedbackHtml}
+      <div class="nav-row">
+        <button class="nav" onclick="goPrev()" ${current === 0 ? "disabled" : ""}>← Back</button>
+        <button class="nav primary" onclick="goNext()" ${answered ? "" : "disabled"}>
+          ${current === questions.length - 1 ? "Finish test" : "Next →"}
+        </button>
+      </div>
+    </div>`;
+}
+
+function selectOption(i){
+  if(userAnswers[current] !== null) return;
+  userAnswers[current] = i;
+  render();
+}
+
+function goNext(){
+  if(userAnswers[current] === null) return;
+  current++;
+  if(current >= questions.length){
+    endTime = Date.now();
+  }
+  render();
+}
+
+function goPrev(){
+  if(current === 0) return;
+  current--;
+  render();
+}
+
+function formatElapsed(ms){
+  const totalSec = Math.max(0, Math.round(ms / 1000));
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  return m > 0 ? `${m}m ${s}s` : `${s}s`;
+}
+
+function renderResults(){
+  const score = userAnswers.reduce((sum, ans, i) => sum + (ans === questions[i].answer ? 1 : 0), 0);
+  progressText.textContent = "Finished";
+  progressFill.style.width = "100%";
+  partText.textContent = "Results";
+  const elapsedStr = (startTime && endTime) ? formatElapsed(endTime - startTime) : null;
+
+  let reviewHtml = "";
+  questions.forEach((q, i) => {
+    const correct = userAnswers[i] === q.answer;
+    let wordsHtml = "";
+    q.options.forEach((opt, j) => {
+      const isAns = j === q.answer;
+      wordsHtml += `
+        <div class="review-word ${isAns ? "is-correct" : ""}">
+          <span>${letters[j]}. ${opt.word}</span>
+          <span class="rw-ipa">${opt.ipa || ""}</span>
+        </div>`;
+    });
+    reviewHtml += `
+      <div class="review-block ${correct ? "" : "wrong"}">
+        <div class="review-head">
+          <span class="qn">Question ${i+1}${q.partLabel ? " — " + q.partLabel : ""}</span>
+          <span class="verdict-tag">${correct ? "Correct" : "Incorrect"}</span>
+        </div>
+        <div class="review-words">${wordsHtml}</div>
+      </div>`;
+  });
+
+  quizArea.innerHTML = `
+    <div class="card">
+      <div class="results">
+        <div class="score-big">${score} / ${questions.length}</div>
+        <div class="score-label">questions answered correctly${elapsedStr ? ` · time: ${elapsedStr}` : ""}</div>
+        <div class="review-list">${reviewHtml}</div>
+        <div class="results-actions">
+          <button class="save-btn" onclick="saveResult()">Save result</button>
+          <button class="restart-btn" onclick="restart()">Try again</button>
+        </div>
+        <div class="save-msg" id="saveMsg"></div>
+      </div>
+    </div>`;
+}
+
+function saveResult(){
+  const score = userAnswers.reduce((sum, ans, i) => sum + (ans === questions[i].answer ? 1 : 0), 0);
+  const pct = Math.round((score / questions.length) * 100);
+  const now = new Date();
+  const lines = [];
+  lines.push(quizData.title || "Practice Test");
+  lines.push(`Date: ${now.toLocaleString()}`);
+  lines.push(`Score: ${score} / ${questions.length} (${pct}%)`);
+  if(startTime && endTime){
+    lines.push(`Time taken: ${formatElapsed(endTime - startTime)}`);
+  }
+  lines.push("");
+  questions.forEach((q, i) => {
+    const chosenIdx = userAnswers[i];
+    const correct = chosenIdx === q.answer;
+    const label = q.partLabel ? ` (${q.partLabel})` : "";
+    lines.push(`Question ${i+1}${label}: ${correct ? "Correct" : "Incorrect"}`);
+    lines.push(`  Prompt: ${q.prompt}`);
+    q.options.forEach((opt, j) => {
+      const tags = [];
+      if(j === q.answer) tags.push("CORRECT");
+      if(j === chosenIdx) tags.push(j === q.answer ? "your answer" : "your answer, incorrect");
+      const tagStr = tags.length ? `  [${tags.join(" — ")}]` : "";
+      lines.push(`  ${letters[j]}. ${opt.word}${opt.ipa ? " " + opt.ipa : ""}${tagStr}`);
+      if(opt.explain) lines.push(`     ${opt.explain}`);
+    });
+    if(chosenIdx === null || chosenIdx === undefined){
+      lines.push("  (not answered)");
+    }
+    lines.push("");
+  });
+
+  const blob = new Blob([lines.join("\n")], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const stamp = now.toISOString().slice(0,19).replace(/[:T]/g,"-");
+  a.href = url;
+  a.download = `quiz-result-${stamp}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  const msg = document.getElementById("saveMsg");
+  if(msg){ msg.textContent = `Saved as ${a.download}`; }
+}
+
+function restart(){
+  current = 0;
+  userAnswers = new Array(questions.length).fill(null);
+  started = false;
+  startTime = null;
+  endTime = null;
+  render();
+}
+
+applyData(DEFAULT_DATA);
+</script>
+</body>
+</html>
